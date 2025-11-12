@@ -1,3 +1,8 @@
+/*
+ * Clase para mostrar los clientes registrados en la base de datos
+ * Proyecto: Sistema de Alquiler de Vehículos "Rueda Libre"
+ * Autor: Adaptado por ChatGPT
+ */
 package scrips_clientes;
 
 import static scrips_clientes.dbConnection.conectar;
@@ -5,71 +10,69 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- * Clase para mostrar los clientes registrados en la base de datos
- * Proyecto: Sistema de Alquiler de Vehiculos "Rueda Libre"
- * Autor: Sr. Gabriel
- */
 public class mostrar_cliente {
     
     public void MostrarClientes(JTable tablaClientes) {
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
-
-        // Definir el modelo de la tabla
+        
+        // Modelo de la tabla con tus variables y nombres correctos
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
-        modelo.addColumn("CC");
+        modelo.addColumn("Cédula");
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
-        modelo.addColumn("Direccion");
+        modelo.addColumn("Teléfono");
+        modelo.addColumn("Dirección");
         modelo.addColumn("Licencia");
-        modelo.addColumn("Telefono");
-
+        
         tablaClientes.setModel(modelo);
-
-        // Consulta SQL (ajustada a la tabla cliente)
-        String sql = "SELECT id_cliente, cc, nombre, apellido, direccion, numero_licencia, telefono "
+        
+        // Consulta SQL actualizada según tu estructura
+        String sql = "SELECT id_cliente, cc, nombre, apellido, telefono, direccion, numero_licencia "
                    + "FROM cliente ORDER BY id_cliente ASC";
-
+        
         try {
-            conn = conectar(); // Conexión desde su clase dbConnection
+            conn = conectar();
             st = conn.createStatement();
             rs = st.executeQuery(sql);
-
-            // Llenar tabla con los resultados
+            
+            // Llenar tabla
             while (rs.next()) {
                 int id = rs.getInt("id_cliente");
                 String cc = rs.getString("cc");
                 String nombre = rs.getString("nombre");
                 String apellido = rs.getString("apellido");
+                String telefono = rs.getString("telefono");
                 String direccion = rs.getString("direccion");
                 String licencia = rs.getString("numero_licencia");
-                String telefono = rs.getString("telefono");
-
-                modelo.addRow(new Object[]{id, cc, nombre, apellido, direccion, licencia, telefono});
+                
+                modelo.addRow(new Object[]{id, cc, nombre, apellido, telefono, direccion, licencia});
             }
-
+            
             tablaClientes.setModel(modelo);
-
+            
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, 
-                "Error al mostrar clientes:\n" + e.getMessage(),
-                "Error de conexion", JOptionPane.ERROR_MESSAGE);
+                "Error al mostrar los clientes:\n" + e.getMessage(), 
+                "Error de conexión", 
+                JOptionPane.ERROR_MESSAGE);
         } finally {
-            // Cerrar recursos correctamente
+            // Cerrar conexiones
             try {
                 if (rs != null) rs.close();
                 if (st != null) st.close();
                 if (conn != null) conn.close();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, 
-                    "Error al cerrar conexion:\n" + ex.getMessage());
+                    "Error al cerrar la conexión:\n" + ex.getMessage(), 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
             }
         }
     }

@@ -5,31 +5,34 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
- * Clase para seleccionar un cliente de la tabla y mostrar sus datos en los campos del formulario
+ * Clase para seleccionar un cliente de la tabla y mostrar sus datos 
+ * en los campos del formulario.
+ * Proyecto: Sistema de Alquiler de Vehículos "Rueda Libre"
+ * Autor: Adaptado por Andrés Rodríguez
  */
 public class seleccionar_cliente {
     
-    public void SeleccionarCliente(JTable tabla_clientes, 
-                                   JTextField id_cliente, 
-                                   JTextField cc, 
-                                   JTextField nombre, 
-                                   JTextField apellido, 
-                                   JTextField direccion, 
-                                   JTextField licencia, 
-                                   JTextField telefono) {
+    public void SeleccionarCliente(JTable tclientes, 
+                                   JTextField txtid, 
+                                   JTextField txtcc, 
+                                   JTextField txtnombre, 
+                                   JTextField txtapellido, 
+                                   JTextField txtdireccion, 
+                                   JTextField txtlicencia, 
+                                   JTextField txttelefono) {
         
-        int fila = tabla_clientes.getSelectedRow();
+        int fila = tclientes.getSelectedRow();
         
         if (fila >= 0) {
-            id_cliente.setText(tabla_clientes.getValueAt(fila, 0).toString());
-            cc.setText(tabla_clientes.getValueAt(fila, 1).toString());
-            nombre.setText(tabla_clientes.getValueAt(fila, 2).toString());
-            apellido.setText(tabla_clientes.getValueAt(fila, 3).toString());
-            direccion.setText(tabla_clientes.getValueAt(fila, 4).toString());
-            licencia.setText(tabla_clientes.getValueAt(fila, 5).toString());
-            telefono.setText(tabla_clientes.getValueAt(fila, 6).toString());
+            txtid.setText(tclientes.getValueAt(fila, 0).toString());
+            txtcc.setText(tclientes.getValueAt(fila, 1).toString());
+            txtnombre.setText(tclientes.getValueAt(fila, 2).toString());
+            txtapellido.setText(tclientes.getValueAt(fila, 3).toString());
+            txtdireccion.setText(tclientes.getValueAt(fila, 4).toString());
+            txtlicencia.setText(tclientes.getValueAt(fila, 5).toString());
+            txttelefono.setText(tclientes.getValueAt(fila, 6).toString());
         } else {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar una fila.");
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una fila de la tabla.");
         }
     }
 }
