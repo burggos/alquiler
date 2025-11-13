@@ -16,7 +16,20 @@ public class interfax_devolucion extends javax.swing.JFrame {
      */
     public interfax_devolucion() {
         initComponents();
-   
+        
+    javax.swing.KeyStroke escapeKeyStroke = javax.swing.KeyStroke.getKeyStroke(
+    java.awt.event.KeyEvent.VK_ESCAPE, 0, false);
+
+
+    this.getRootPane().getInputMap(javax.swing.JComponent.WHEN_IN_FOCUSED_WINDOW)
+        .put(escapeKeyStroke, "escape");
+
+    this.getRootPane().getActionMap().put("escape", new javax.swing.AbstractAction() {
+        @Override
+        public void actionPerformed(java.awt.event.ActionEvent e) {
+            accionEscape();
+        }
+    });
     
     }
 
@@ -190,6 +203,14 @@ public class interfax_devolucion extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+
+    private void accionEscape() {
+    
+    this.dispose();
+    
+    interfax_menu menu = new interfax_menu(); 
+    menu.setVisible(true);
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -23,6 +23,20 @@ public class interfax_cliente extends javax.swing.JFrame {
     public interfax_cliente() {
         initComponents();
         mostrar_cliente.MostrarClientes(tclientes);
+    javax.swing.KeyStroke escapeKeyStroke = javax.swing.KeyStroke.getKeyStroke(
+    java.awt.event.KeyEvent.VK_ESCAPE, 0, false);
+
+
+    this.getRootPane().getInputMap(javax.swing.JComponent.WHEN_IN_FOCUSED_WINDOW)
+        .put(escapeKeyStroke, "escape");
+
+    this.getRootPane().getActionMap().put("escape", new javax.swing.AbstractAction() {
+        @Override
+        public void actionPerformed(java.awt.event.ActionEvent e) {
+            accionEscape();
+        }
+    });
+
     }
 
     /**
@@ -333,8 +347,17 @@ public class interfax_cliente extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private void accionEscape() {
+    
+    this.dispose();
+    
+    interfax_menu menu = new interfax_menu(); 
+    menu.setVisible(true);
+    }
     private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtidActionPerformed

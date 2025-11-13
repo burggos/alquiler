@@ -25,7 +25,21 @@ public class interfax_auto extends javax.swing.JFrame {
         initComponents();
         id.enable(false);
         mostrar_auto.MostrarVehiculos(tabla);
-        // --- Cuando se cierre esta ventana, volver al menú principal ---
+        
+        
+    javax.swing.KeyStroke escapeKeyStroke = javax.swing.KeyStroke.getKeyStroke(
+    java.awt.event.KeyEvent.VK_ESCAPE, 0, false);
+
+
+    this.getRootPane().getInputMap(javax.swing.JComponent.WHEN_IN_FOCUSED_WINDOW)
+        .put(escapeKeyStroke, "escape");
+
+    this.getRootPane().getActionMap().put("escape", new javax.swing.AbstractAction() {
+        @Override
+        public void actionPerformed(java.awt.event.ActionEvent e) {
+            accionEscape();
+        }
+    });
 
     }
 
@@ -302,6 +316,15 @@ public class interfax_auto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    private void accionEscape() {
+    
+        this.dispose();
+
+        interfax_menu menu = new interfax_menu(); 
+        menu.setVisible(true);
+    }
     private void placaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_placaActionPerformed

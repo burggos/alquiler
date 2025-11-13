@@ -39,7 +39,21 @@ public class interfax_alquiler extends javax.swing.JFrame {
             calcularCostoTotal();
         }
     });
+    
+    javax.swing.KeyStroke escapeKeyStroke = javax.swing.KeyStroke.getKeyStroke(
+    java.awt.event.KeyEvent.VK_ESCAPE, 0, false);
+
+
+    this.getRootPane().getInputMap(javax.swing.JComponent.WHEN_IN_FOCUSED_WINDOW)
+        .put(escapeKeyStroke, "escape");
+
+    this.getRootPane().getActionMap().put("escape", new javax.swing.AbstractAction() {
+        @Override
+        public void actionPerformed(java.awt.event.ActionEvent e) {
+            accionEscape();
         }
+    });
+            }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -310,48 +324,48 @@ public class interfax_alquiler extends javax.swing.JFrame {
     final int DIAS_POR_SEMANA = 7;
     double costoDiario = 0.0;
     
-    // =============================================================
-    // MEJORA: Validar si el campo de costo está vacío o nulo.
-    // =============================================================
     String costoText = costo.getText().trim();
     if (costoText.isEmpty()) {
         total.setText("0.00");
         return; 
     }
     
-    // 1. Obtener el Costo Base (del JTextField 'costo')
     try {
         costoDiario = Double.parseDouble(costoText);
     } catch (NumberFormatException e) {
-        // El campo tiene texto no numérico (ej. 'abc')
+
         total.setText("Error en Costo");
         return; 
     }
 
-    // 2. Obtener la Duración Seleccionada (del JComboBox 'duracion')
+
     String duracionSeleccionada = (String) duracion.getSelectedItem();
     if (duracionSeleccionada == null || duracionSeleccionada.isEmpty()) {
         total.setText("0.00");
         return; 
     }
     
-    // Extraer el número de semanas
     int numeroSemanas = 0;
     try {
-        // Tomamos el primer token de la cadena ("1", "2", etc.)
+
         String[] partes = duracionSeleccionada.split(" ");
         numeroSemanas = Integer.parseInt(partes[0]);
     } catch (Exception e) {
-        // En caso de que la cadena no tenga un número al inicio
         numeroSemanas = 0; 
     }
     
-    // 3. Realizar el Cálculo
     double costoTotalCalculado = costoDiario * DIAS_POR_SEMANA * numeroSemanas;
     
-    // 4. Mostrar el resultado
     total.setText(String.format("%.2f", costoTotalCalculado));
-}
+    }
+    
+    private void accionEscape() {
+    
+    this.dispose();
+    
+    interfax_menu menu = new interfax_menu(); 
+    menu.setVisible(true);
+    }
     
     private void autoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autoActionPerformed
         // TODO add your handling code here:
