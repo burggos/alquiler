@@ -291,6 +291,11 @@ public class interfax_cliente extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tclientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tclientesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tclientes);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -380,6 +385,10 @@ public class interfax_cliente extends javax.swing.JFrame {
         mostrar_cliente.MostrarClientes(tclientes);
         limpiar_cliente.LimpiarCampos(txtid, txtcc, txtnombre, txtapellido, txtdireccion, txtlicencia, txttelefono);
     }//GEN-LAST:event_bmodificarActionPerformed
+
+    private void tclientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tclientesMouseClicked
+        seleccionar_cliente.SeleccionarCliente(tclientes, txtid, txtcc, txtnombre, txtapellido, txtdireccion, txtlicencia, txttelefono);
+    }//GEN-LAST:event_tclientesMouseClicked
 
     /**
      * @param args the command line arguments
