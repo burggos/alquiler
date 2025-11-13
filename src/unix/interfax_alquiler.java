@@ -13,6 +13,7 @@ public class interfax_alquiler extends javax.swing.JFrame {
     scrips_alquiler.mostrar_alquiler mostrar_alquiler = new scrips_alquiler.mostrar_alquiler();
     scrips_alquiler.seleccionar_alquiler_auto selAuto = new scrips_alquiler.seleccionar_alquiler_auto();
     scrips_alquiler.guardar_alquiler guardar_alquiler = new scrips_alquiler.guardar_alquiler();
+    scrips_alquiler.limpiar_alquiler limpiar_alquiler = new scrips_alquiler.limpiar_alquiler();
     scrips_alquiler.seleccionar_alquiler_cliente selCliente = new scrips_alquiler.seleccionar_alquiler_cliente();
     
     
@@ -362,6 +363,9 @@ public class interfax_alquiler extends javax.swing.JFrame {
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         guardar_alquiler.guardarAlquiler(cliente, auto, duracion, total, estado);
+        mostrar_alquiler.MostrarClientes(tabla_cleintes);
+        mostrar_alquiler.MostrarVehiculos(tabla_autos);
+        limpiar_alquiler.LimpiarCamposAlquiler(id, cliente, auto, costo, total, duracion, estado);
     }//GEN-LAST:event_guardarActionPerformed
 
     private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
