@@ -12,7 +12,8 @@ package unix;
 public class interfax_alquiler extends javax.swing.JFrame {
     scrips_alquiler.mostrar_alquiler mostrar_alquiler = new scrips_alquiler.mostrar_alquiler();
     scrips_alquiler.seleccionar_alquiler_auto selAuto = new scrips_alquiler.seleccionar_alquiler_auto();
-      scrips_alquiler.seleccionar_alquiler_cliente selCliente = new scrips_alquiler.seleccionar_alquiler_cliente();
+    scrips_alquiler.guardar_alquiler guardar_alquiler = new scrips_alquiler.guardar_alquiler();
+    scrips_alquiler.seleccionar_alquiler_cliente selCliente = new scrips_alquiler.seleccionar_alquiler_cliente();
     
     
     /**
@@ -23,7 +24,21 @@ public class interfax_alquiler extends javax.swing.JFrame {
         id.enable(false);
         mostrar_alquiler.MostrarClientes(tabla_cleintes);
         mostrar_alquiler.MostrarVehiculos(tabla_autos);
-    }
+   
+
+    duracion.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            calcularCostoTotal();
+        }
+    });
+
+
+    costo.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyReleased(java.awt.event.KeyEvent evt) {
+            calcularCostoTotal();
+        }
+    });
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,7 +63,7 @@ public class interfax_alquiler extends javax.swing.JFrame {
         guardar = new javax.swing.JButton();
         estado = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        duracion = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         total = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
@@ -73,7 +88,7 @@ public class interfax_alquiler extends javax.swing.JFrame {
         jLabel5.setText("Auto:");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setText("Costo/Dia:");
+        jLabel7.setText("Total:");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel8.setText("Estado:");
@@ -99,12 +114,12 @@ public class interfax_alquiler extends javax.swing.JFrame {
             }
         });
 
-        estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Alquilado", "Disponible" }));
+        estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Activo", "Vencido", "Finalizado" }));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("Duracion:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "1 semana", "2 semanas", "3 semanas", "4 semanas", "5 semanas", "6 semanas", "7 semanas", "8 semanas" }));
+        duracion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "1 semana", "2 semanas", "3 semanas", "4 semanas", "5 semanas", "6 semanas", "7 semanas", "8 semanas" }));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Costo/Dia:");
@@ -131,7 +146,7 @@ public class interfax_alquiler extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cliente, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(auto, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(duracion, 0, 181, Short.MAX_VALUE)
                             .addComponent(id, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(estado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -147,11 +162,11 @@ public class interfax_alquiler extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
+                        .addGap(55, 55, 55)
                         .addComponent(total)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(20, 20, 20)
                 .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -169,13 +184,13 @@ public class interfax_alquiler extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(auto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(auto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(duracion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(costo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,9 +203,9 @@ public class interfax_alquiler extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
                 .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 102));
@@ -290,6 +305,53 @@ public class interfax_alquiler extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void calcularCostoTotal() {
+    final int DIAS_POR_SEMANA = 7;
+    double costoDiario = 0.0;
+    
+    // =============================================================
+    // MEJORA: Validar si el campo de costo está vacío o nulo.
+    // =============================================================
+    String costoText = costo.getText().trim();
+    if (costoText.isEmpty()) {
+        total.setText("0.00");
+        return; 
+    }
+    
+    // 1. Obtener el Costo Base (del JTextField 'costo')
+    try {
+        costoDiario = Double.parseDouble(costoText);
+    } catch (NumberFormatException e) {
+        // El campo tiene texto no numérico (ej. 'abc')
+        total.setText("Error en Costo");
+        return; 
+    }
+
+    // 2. Obtener la Duración Seleccionada (del JComboBox 'duracion')
+    String duracionSeleccionada = (String) duracion.getSelectedItem();
+    if (duracionSeleccionada == null || duracionSeleccionada.isEmpty()) {
+        total.setText("0.00");
+        return; 
+    }
+    
+    // Extraer el número de semanas
+    int numeroSemanas = 0;
+    try {
+        // Tomamos el primer token de la cadena ("1", "2", etc.)
+        String[] partes = duracionSeleccionada.split(" ");
+        numeroSemanas = Integer.parseInt(partes[0]);
+    } catch (Exception e) {
+        // En caso de que la cadena no tenga un número al inicio
+        numeroSemanas = 0; 
+    }
+    
+    // 3. Realizar el Cálculo
+    double costoTotalCalculado = costoDiario * DIAS_POR_SEMANA * numeroSemanas;
+    
+    // 4. Mostrar el resultado
+    total.setText(String.format("%.2f", costoTotalCalculado));
+}
+    
     private void autoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_autoActionPerformed
@@ -299,7 +361,7 @@ public class interfax_alquiler extends javax.swing.JFrame {
     }//GEN-LAST:event_costoActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-
+        guardar_alquiler.guardarAlquiler(cliente, auto, duracion, total, estado);
     }//GEN-LAST:event_guardarActionPerformed
 
     private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
@@ -353,10 +415,10 @@ public class interfax_alquiler extends javax.swing.JFrame {
     private javax.swing.JTextField auto;
     private javax.swing.JTextField cliente;
     private javax.swing.JTextField costo;
+    private javax.swing.JComboBox<String> duracion;
     private javax.swing.JComboBox<String> estado;
     private javax.swing.JButton guardar;
     private javax.swing.JTextField id;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
