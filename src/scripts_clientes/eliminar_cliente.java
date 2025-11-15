@@ -1,4 +1,4 @@
-package scrips_clientes;
+package scripts_clientes;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;

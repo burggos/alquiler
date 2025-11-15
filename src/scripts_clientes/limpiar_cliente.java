@@ -1,4 +1,4 @@
-package scrips_clientes;
+package scripts_clientes;
 
 import javax.swing.JTextField;
 

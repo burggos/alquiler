@@ -1,4 +1,4 @@
-package scrips_alquiler;
+package scripts_alquiler;
 
 import javax.swing.JTable;
 import javax.swing.JTextField;

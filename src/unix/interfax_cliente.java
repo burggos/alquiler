@@ -11,12 +11,12 @@ package unix;
  */
 public class interfax_cliente extends javax.swing.JFrame {
 
-    scrips_clientes.agregar agregar_cliente = new scrips_clientes.agregar();
-    scrips_clientes.mostrar_cliente mostrar_cliente = new scrips_clientes.mostrar_cliente();
-    scrips_clientes.eliminar_cliente eliminar_cliente = new scrips_clientes.eliminar_cliente();
-    scrips_clientes.limpiar_cliente limpiar_cliente = new scrips_clientes.limpiar_cliente();
-    scrips_clientes.seleccionar_cliente seleccionar_cliente = new scrips_clientes.seleccionar_cliente();
-    scrips_clientes.modificar_cliente modificar_cliente = new scrips_clientes.modificar_cliente();
+    scripts_clientes.agregar agregar_cliente = new scripts_clientes.agregar();
+    scripts_clientes.mostrar_cliente mostrar_cliente = new scripts_clientes.mostrar_cliente();
+    scripts_clientes.eliminar_cliente eliminar_cliente = new scripts_clientes.eliminar_cliente();
+    scripts_clientes.limpiar_cliente limpiar_cliente = new scripts_clientes.limpiar_cliente();
+    scripts_clientes.seleccionar_cliente seleccionar_cliente = new scripts_clientes.seleccionar_cliente();
+    scripts_clientes.modificar_cliente modificar_cliente = new scripts_clientes.modificar_cliente();
     /**
      * Creates new form interfax_clientes
      */

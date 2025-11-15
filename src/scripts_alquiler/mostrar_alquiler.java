@@ -1,6 +1,6 @@
-package scrips_alquiler;
+package scripts_alquiler;
 
-import static scrips_clientes.dbConnection.conectar;
+import static scripts_clientes.dbConnection.conectar;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

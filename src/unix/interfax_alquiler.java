@@ -10,11 +10,11 @@ package unix;
  * @author jhand
  */
 public class interfax_alquiler extends javax.swing.JFrame {
-    scrips_alquiler.mostrar_alquiler mostrar_alquiler = new scrips_alquiler.mostrar_alquiler();
-    scrips_alquiler.seleccionar_alquiler_auto selAuto = new scrips_alquiler.seleccionar_alquiler_auto();
-    scrips_alquiler.guardar_alquiler guardar_alquiler = new scrips_alquiler.guardar_alquiler();
-    scrips_alquiler.limpiar_alquiler limpiar_alquiler = new scrips_alquiler.limpiar_alquiler();
-    scrips_alquiler.seleccionar_alquiler_cliente selCliente = new scrips_alquiler.seleccionar_alquiler_cliente();
+    scripts_alquiler.mostrar_alquiler mostrar_alquiler = new scripts_alquiler.mostrar_alquiler();
+    scripts_alquiler.seleccionar_alquiler_auto selAuto = new scripts_alquiler.seleccionar_alquiler_auto();
+    scripts_alquiler.guardar_alquiler guardar_alquiler = new scripts_alquiler.guardar_alquiler();
+    scripts_alquiler.limpiar_alquiler limpiar_alquiler = new scripts_alquiler.limpiar_alquiler();
+    scripts_alquiler.seleccionar_alquiler_cliente selCliente = new scripts_alquiler.seleccionar_alquiler_cliente();
     
     
     /**

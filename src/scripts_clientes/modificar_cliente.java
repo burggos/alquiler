@@ -1,6 +1,6 @@
-package scrips_clientes;
+package scripts_clientes;
 
-import static scrips_clientes.dbConnection.conectar;
+import static scripts_clientes.dbConnection.conectar;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
