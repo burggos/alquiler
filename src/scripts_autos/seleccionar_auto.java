@@ -1,4 +1,4 @@
-package scrips_autos;
+package scripts_autos;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;

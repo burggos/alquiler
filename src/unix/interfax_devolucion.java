@@ -10,12 +10,13 @@ package unix;
  * @author jhand
  */
 public class interfax_devolucion extends javax.swing.JFrame {
-
-    /**
-     * Creates new form devolucion
-     */
+    scripts_devolucion.mostrar_devolucion mostar = new scripts_devolucion.mostrar_devolucion();
+    scripts_devolucion.seleccionar_devolucion seleccionar = new scripts_devolucion.seleccionar_devolucion();
+    scripts_devolucion.procesar_devolucion procesar = new scripts_devolucion.procesar_devolucion();
+  
     public interfax_devolucion() {
         initComponents();
+        mostar.MostrarAlquileres(tabla);
         
     javax.swing.KeyStroke escapeKeyStroke = javax.swing.KeyStroke.getKeyStroke(
     java.awt.event.KeyEvent.VK_ESCAPE, 0, false);
@@ -41,7 +42,6 @@ public class interfax_devolucion extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
@@ -64,7 +64,7 @@ public class interfax_devolucion extends javax.swing.JFrame {
         jTextField4.setText("jTextField4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DEVOLUCION", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
@@ -82,7 +82,7 @@ public class interfax_devolucion extends javax.swing.JFrame {
         jLabel4.setText("Estado:");
 
         estado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+        estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Bueno", "Con Daños", "Requiere Mantenimiento" }));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setText("Observacion:");
@@ -90,6 +90,11 @@ public class interfax_devolucion extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(51, 255, 0));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("PROCESAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -141,7 +146,7 @@ public class interfax_devolucion extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(observacion, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
@@ -152,7 +157,7 @@ public class interfax_devolucion extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista De Devolucion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Lista de alquilados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -165,6 +170,11 @@ public class interfax_devolucion extends javax.swing.JFrame {
 
             }
         ));
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabla);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -186,6 +196,15 @@ public class interfax_devolucion extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
+        seleccionar.SeleccionarDevolucion(tabla, id, id_alquiler, entrega, estado, observacion);
+    }//GEN-LAST:event_tablaMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        procesar.Procesar(id, id_alquiler, entrega, estado, observacion, tabla);
+        mostar.MostrarAlquileres(tabla);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

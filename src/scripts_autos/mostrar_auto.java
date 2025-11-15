@@ -1,4 +1,4 @@
-package scrips_autos;
+package scripts_autos;
 
 import static scripts_clientes.dbConnection.conectar;
 import java.sql.Connection;

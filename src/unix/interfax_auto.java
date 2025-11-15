@@ -11,12 +11,12 @@ package unix;
  */
 public class interfax_auto extends javax.swing.JFrame {
     
-    scrips_autos.mostrar_auto mostrar_auto = new scrips_autos.mostrar_auto();
-    scrips_autos.agregar_auto agregar_auto = new scrips_autos.agregar_auto();
-    scrips_autos.seleccionar_auto seleccionar_auto = new scrips_autos.seleccionar_auto();
-    scrips_autos.modificar_auto modificar_auto = new scrips_autos.modificar_auto();
-    scrips_autos.eliminar_autos eliminar_auto = new scrips_autos.eliminar_autos();
-    scrips_autos.limpiar_auto limpiar_auto = new scrips_autos.limpiar_auto();
+    scripts_autos.mostrar_auto mostrar_auto = new scripts_autos.mostrar_auto();
+    scripts_autos.agregar_auto agregar_auto = new scripts_autos.agregar_auto();
+    scripts_autos.seleccionar_auto seleccionar_auto = new scripts_autos.seleccionar_auto();
+    scripts_autos.modificar_auto modificar_auto = new scripts_autos.modificar_auto();
+    scripts_autos.eliminar_autos eliminar_auto = new scripts_autos.eliminar_autos();
+    scripts_autos.limpiar_auto limpiar_auto = new scripts_autos.limpiar_auto();
   
     /**
      * Creates new form interfax_auto

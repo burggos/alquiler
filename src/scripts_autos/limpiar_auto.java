@@ -1,4 +1,4 @@
-package scrips_autos;
+package scripts_autos;
 
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
