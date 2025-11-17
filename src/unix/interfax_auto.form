@@ -329,12 +329,10 @@
         <Component class="javax.swing.JComboBox" name="estado">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="5">
-                <StringItem index="0" value=" "/>
-                <StringItem index="1" value="Disponible"/>
-                <StringItem index="2" value="Alquilado"/>
-                <StringItem index="3" value="Mantenimiento"/>
-                <StringItem index="4" value=" "/>
+              <StringArray count="3">
+                <StringItem index="0" value="Disponible"/>
+                <StringItem index="1" value=" "/>
+                <StringItem index="2" value=" "/>
               </StringArray>
             </Property>
           </Properties>

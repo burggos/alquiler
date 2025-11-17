@@ -75,22 +75,16 @@ public class procesar_devolucion {
             psUpdAlquiler.setInt(1, idAlq);
             psUpdAlquiler.executeUpdate();
 
-            // 3. Estado del vehículo según estado físico
-            String nuevoEstadoVehiculo;
-            if (estadoVehiculoFisico.equalsIgnoreCase("Bueno")) {
-                nuevoEstadoVehiculo = "Disponible";
-            } else {
-                nuevoEstadoVehiculo = "Mantenimiento";
-            }
-
+            // 3. Actualizar estado del vehículo EXACTAMENTE como lo seleccione el usuario
             String sqlUpdVehiculo =
                 "UPDATE vehiculo SET estado = ? "
                 + "WHERE id_vehiculo = (SELECT id_vehiculo FROM alquiler WHERE id_alquiler = ?)";
 
             psUpdVehiculo = conn.prepareStatement(sqlUpdVehiculo);
-            psUpdVehiculo.setString(1, nuevoEstadoVehiculo);
+            psUpdVehiculo.setString(1, estadoVehiculoFisico);  // <-- Valor directo desde formulario
             psUpdVehiculo.setInt(2, idAlq);
             psUpdVehiculo.executeUpdate();
+
 
             JOptionPane.showMessageDialog(null, "Devolución procesada correctamente.");
 

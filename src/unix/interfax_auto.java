@@ -156,7 +156,7 @@ public class interfax_auto extends javax.swing.JFrame {
             }
         });
 
-        estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Disponible", "Alquilado", "Mantenimiento", " " }));
+        estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", " ", " " }));
 
         jButton1.setBackground(new java.awt.Color(255, 153, 102));
         jButton1.setText("limpiar");
