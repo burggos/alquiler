@@ -185,6 +185,9 @@
         <Component class="javax.swing.JTextField" name="cliente">
         </Component>
         <Component class="javax.swing.JTextField" name="id">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="idActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="auto">
           <Events>

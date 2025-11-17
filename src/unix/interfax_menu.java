@@ -15,7 +15,8 @@ public class interfax_menu extends javax.swing.JFrame {
      * Creates new form interfax_menu
      */
     public interfax_menu() {
-        initComponents();
+        initComponents();       
+        
     }
 
     /**

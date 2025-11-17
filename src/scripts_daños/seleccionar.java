@@ -4,30 +4,19 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-/**
- * Clase para seleccionar un daño de la tabla y mostrar sus datos
- * en los campos del formulario.
- * Proyecto: Sistema de Alquiler de Vehículos "Rueda Libre"
- * Autor: Adaptado por Andrés Rodríguez
- */
 public class seleccionar {
 
-    public void SeleccionarDano(JTable Tdaños,
-                                JTextField txtid,
-                                JTextField txtdescipcion,
-                                JTextField txtcosto,
-                                JTextField txtdevolucion) {
+    public void SeleccionarDano(JTable tabla,
+                                JTextField txtDevolucion) {
 
-        int fila = Tdaños.getSelectedRow();
+        int fila = tabla.getSelectedRow();
 
         if (fila >= 0) {
-            txtid.setText(Tdaños.getValueAt(fila, 0).toString());
-            txtdevolucion.setText(Tdaños.getValueAt(fila, 1).toString());
-            txtdescipcion.setText(Tdaños.getValueAt(fila, 2).toString());
-            txtcosto.setText(Tdaños.getValueAt(fila, 3).toString());
+            // Solo tomar la columna donde está el ID de la devolución
+            txtDevolucion.setText(tabla.getValueAt(fila, 3).toString());
+            //                   ^ columna donde está id_devolucion según tu mostrar
         } else {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar una fila de la tabla.");
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una fila.");
         }
     }
 }
-

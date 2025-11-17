@@ -12,6 +12,7 @@ package unix;
 public class interfax_matenimeinto extends javax.swing.JFrame {
     scripts_mantenimiento.mostrar_mantenimiento mostrar = new scripts_mantenimiento.mostrar_mantenimiento();
     scripts_mantenimiento.seleccionar_mantenimiento seleccionar = new scripts_mantenimiento.seleccionar_mantenimiento();
+    scripts_mantenimiento.procesar_mantenimiento procesar = new scripts_mantenimiento.procesar_mantenimiento();
     /**
      * Creates new form interfax_matenimeinto
      */
@@ -55,7 +56,7 @@ public class interfax_matenimeinto extends javax.swing.JFrame {
         id_devolucion = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         id_descripcion = new javax.swing.JTextField();
-        id_descripcion1 = new javax.swing.JTextField();
+        costo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
 
@@ -122,7 +123,7 @@ public class interfax_matenimeinto extends javax.swing.JFrame {
                             .addComponent(id_devolucion, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(id_descripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                            .addComponent(id_descripcion1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)))))
+                            .addComponent(costo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,7 +155,7 @@ public class interfax_matenimeinto extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(id_descripcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(costo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -203,11 +204,12 @@ public class interfax_matenimeinto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+       procesar.Procesar(id_vehiculo, id_devolucion, id_descripcion, id_descripcion, jDateChooser1, costo);
+       mostrar.MostrarVehiculos(tabla);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
-        seleccionar.SeleccionarVehiculo(tabla, id_vehiculo, id_devolucion, id_descripcion1, id_descripcion, jDateChooser1, id);
+        seleccionar.SeleccionarVehiculo(tabla, id_vehiculo, id_devolucion, id_descripcion, id_descripcion, jDateChooser1, costo);
     }//GEN-LAST:event_tablaMouseClicked
 
     /**
@@ -253,9 +255,9 @@ public class interfax_matenimeinto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField costo;
     private javax.swing.JTextField id;
     private javax.swing.JTextField id_descripcion;
-    private javax.swing.JTextField id_descripcion1;
     private javax.swing.JTextField id_devolucion;
     private javax.swing.JTextField id_vehiculo;
     private javax.swing.JButton jButton1;

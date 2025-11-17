@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import com.toedter.calendar.JDateChooser;
@@ -70,19 +69,21 @@ public class procesar_mantenimiento {
 
             psInsert.executeUpdate();
 
-            // ACTUALIZAR estado del vehículo
+            // =========================================================
+            // 🔹 AHORA EL VEHÍCULO PASA A "Disponible" (Antes: Mantenimiento)
+            // =========================================================
             String sqlUpdVehiculo =
-                "UPDATE vehiculo SET estado = 'Mantenimiento' WHERE id_vehiculo = ?";
+                "UPDATE vehiculo SET estado = 'Disponible' WHERE id_vehiculo = ?";
 
             psUpdVehiculo = conn.prepareStatement(sqlUpdVehiculo);
             psUpdVehiculo.setInt(1, Integer.parseInt(id_vehiculo.getText()));
             psUpdVehiculo.executeUpdate();
 
-            // SI HAY devolución → marcarla como procesada (opcional)
+            // SI HAY devolución → marcarla como procesada (si lo necesita)
             if (!id_devolucion.getText().trim().isEmpty()) {
 
                 String sqlUpdDevolucion =
-                    "UPDATE devolucion SET estado_material = 'Procesado' "
+                    "UPDATE devolucion SET estado_vehiculo = 'bueno' "
                     + "WHERE id_devolucion = ?";
 
                 psUpdDevolucion = conn.prepareStatement(sqlUpdDevolucion);
@@ -90,7 +91,7 @@ public class procesar_mantenimiento {
                 psUpdDevolucion.executeUpdate();
             }
 
-            JOptionPane.showMessageDialog(null, "Mantenimiento registrado correctamente.");
+            JOptionPane.showMessageDialog(null, "Mantenimiento registrado y vehículo disponible.");
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error SQL en mantenimiento: " + e.getMessage());

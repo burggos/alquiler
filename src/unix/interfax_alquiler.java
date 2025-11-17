@@ -103,6 +103,12 @@ public class interfax_alquiler extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Total:");
 
+        id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idActionPerformed(evt);
+            }
+        });
+
         auto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 autoActionPerformed(evt);
@@ -380,6 +386,10 @@ public class interfax_alquiler extends javax.swing.JFrame {
     private void tabla_autosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_autosMouseClicked
         selCliente.SeleccionarCliente(tabla_cleintes, cliente);
     }//GEN-LAST:event_tabla_autosMouseClicked
+
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idActionPerformed
 
     /**
      * @param args the command line arguments

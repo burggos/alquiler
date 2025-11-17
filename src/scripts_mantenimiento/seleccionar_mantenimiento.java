@@ -23,28 +23,29 @@ public class seleccionar_mantenimiento {
 
             // Columnas esperadas:
             // 0 = ID Vehículo
-            // 1 = Vehículo (marca + modelo)
-            // 2 = Estado (Dañado / Mantenimiento)
+            // 1 = Vehículo
+            // 2 = Estado
             // 3 = ID Devolución
             // 4 = Cliente
+            // 5 = Costo Daño  <-- NUEVO
 
             String idVeh = tabla.getValueAt(fila, 0).toString();
-            String idDev = tabla.getValueAt(fila, 3).toString();
+            String idDev = tabla.getValueAt(fila, 3) != null
+                           ? tabla.getValueAt(fila, 3).toString()
+                           : "";
+
+            String costoDano = tabla.getValueAt(fila, 5) != null
+                               ? tabla.getValueAt(fila, 5).toString()
+                               : "";
 
             // ---- Asignar valores principales ----
             id_vehiculo.setText(idVeh);
+            id_devolucion.setText(idDev);
+            costo.setText(costoDano);
 
-            // Si no hay devolución (vehículo solo en mantenimiento)
-            if (idDev == null || idDev.trim().isEmpty()) {
-                id_devolucion.setText("");
-            } else {
-                id_devolucion.setText(idDev);
-            }
-
-            // ---- Limpiar los campos ingresables ----
+            // ---- Limpiar campos de ingreso ----
             descripcion1.setText("");
             descripcion2.setText("");
-            costo.setText("");
             fecha.setDate(null);
 
         });
