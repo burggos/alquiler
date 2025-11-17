@@ -14,8 +14,7 @@ public class limpiar_alquiler {
                                       JTextField auto,
                                       JTextField costo,
                                       JTextField total,
-                                      JComboBox<String> duracion,
-                                      JComboBox<String> estado) {
+                                      JComboBox<String> duracion) {
 
         // Limpieza de campos de texto
         id.setText("");
@@ -31,9 +30,5 @@ public class limpiar_alquiler {
             duracion.setSelectedIndex(0);
         }
 
-        // JComboBox Estado (del Alquiler: Activo, Finalizado, etc.)
-        if (estado.getItemCount() > 0) {
-            estado.setSelectedIndex(0);
-        }
     }
 }

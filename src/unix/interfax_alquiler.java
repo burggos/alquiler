@@ -70,13 +70,11 @@ public class interfax_alquiler extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         cliente = new javax.swing.JTextField();
         id = new javax.swing.JTextField();
         auto = new javax.swing.JTextField();
         costo = new javax.swing.JTextField();
         guardar = new javax.swing.JButton();
-        estado = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         duracion = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
@@ -105,9 +103,6 @@ public class interfax_alquiler extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setText("Total:");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel8.setText("Estado:");
-
         auto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 autoActionPerformed(evt);
@@ -128,8 +123,6 @@ public class interfax_alquiler extends javax.swing.JFrame {
                 guardarActionPerformed(evt);
             }
         });
-
-        estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Activo", "Vencido", "Finalizado" }));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("Duracion:");
@@ -153,7 +146,6 @@ public class interfax_alquiler extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -162,8 +154,7 @@ public class interfax_alquiler extends javax.swing.JFrame {
                             .addComponent(cliente, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(auto, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(duracion, 0, 181, Short.MAX_VALUE)
-                            .addComponent(id, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(estado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(id, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addGap(18, 18, 18)
@@ -212,15 +203,11 @@ public class interfax_alquiler extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48)
+                    .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(88, 88, 88)
                 .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 102));
@@ -376,10 +363,10 @@ public class interfax_alquiler extends javax.swing.JFrame {
     }//GEN-LAST:event_costoActionPerformed
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        guardar_alquiler.guardarAlquiler(cliente, auto, duracion, total, estado);
+        guardar_alquiler.guardarAlquiler(cliente, auto, duracion, total);
         mostrar_alquiler.MostrarClientes(tabla_cleintes);
         mostrar_alquiler.MostrarVehiculos(tabla_autos);
-        limpiar_alquiler.LimpiarCamposAlquiler(id, cliente, auto, costo, total, duracion, estado);
+        limpiar_alquiler.LimpiarCamposAlquiler(id, cliente, auto, costo, total, duracion);
     }//GEN-LAST:event_guardarActionPerformed
 
     private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
@@ -387,7 +374,7 @@ public class interfax_alquiler extends javax.swing.JFrame {
     }//GEN-LAST:event_totalActionPerformed
 
     private void tabla_cleintesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_cleintesMouseClicked
-       selAuto.SeleccionarAuto(tabla_autos, auto, costo, estado);
+       selAuto.SeleccionarAuto(tabla_autos, auto, costo);
     }//GEN-LAST:event_tabla_cleintesMouseClicked
 
     private void tabla_autosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_autosMouseClicked
@@ -434,7 +421,6 @@ public class interfax_alquiler extends javax.swing.JFrame {
     private javax.swing.JTextField cliente;
     private javax.swing.JTextField costo;
     private javax.swing.JComboBox<String> duracion;
-    private javax.swing.JComboBox<String> estado;
     private javax.swing.JButton guardar;
     private javax.swing.JTextField id;
     private javax.swing.JLabel jLabel1;
@@ -443,7 +429,6 @@ public class interfax_alquiler extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

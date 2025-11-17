@@ -10,8 +10,7 @@ public class seleccionar_alquiler_auto {
 
     public void SeleccionarAuto(JTable tabla_autos, 
                                 JTextField auto, 
-                                JTextField costo, 
-                                JComboBox<String> estado) {
+                                JTextField costo) {
 
         SwingUtilities.invokeLater(() -> {
             int fila = tabla_autos.getSelectedRow();
@@ -35,7 +34,6 @@ public class seleccionar_alquiler_auto {
                 // Paso 3: Asignar a los campos del formulario
                 auto.setText(vehiculoIdStr); // El ID ahora está validado como INT
                 costo.setText(costoDia);
-                estado.setSelectedItem(estadoVehiculo);
                 
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, 

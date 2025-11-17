@@ -35,7 +35,8 @@ public class procesar_devolucion {
                 return;
             }
 
-            // Validaciones
+            // =============== VALIDACIONES ==================
+
             if (id_alquiler.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Debe seleccionar un alquiler.");
                 return;
@@ -47,7 +48,7 @@ public class procesar_devolucion {
                 return;
             }
 
-            // Convertir fecha
+            // Convertir fecha a formato SQL
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String fechaSQL = sdf.format(fechaEntrega);
 
@@ -55,7 +56,8 @@ public class procesar_devolucion {
             String estadoVehiculoFisico = estadoFisico.getSelectedItem().toString();
             String observ = observacion.getText().trim();
 
-            // 1. Insertar en devolución
+            // =============== 1. INSERTAR DEVOLUCIÓN ==================
+
             String sqlInsert =
                 "INSERT INTO devolucion (id_alquiler, fecha_devolucion, estado_vehiculo, observaciones) "
                 + "VALUES (?, ?, ?, ?)";
@@ -67,7 +69,8 @@ public class procesar_devolucion {
             psInsert.setString(4, observ);
             psInsert.executeUpdate();
 
-            // 2. Actualizar alquiler → Finalizado
+            // =============== 2. ACTUALIZAR ESTADO DEL ALQUILER ==================
+
             String sqlUpdAlquiler =
                 "UPDATE alquiler SET estado = 'Finalizado' WHERE id_alquiler = ?";
 
@@ -75,16 +78,28 @@ public class procesar_devolucion {
             psUpdAlquiler.setInt(1, idAlq);
             psUpdAlquiler.executeUpdate();
 
-            // 3. Actualizar estado del vehículo EXACTAMENTE como lo seleccione el usuario
+            // =============== 3. ACTUALIZAR ESTADO DEL VEHÍCULO ==================
+
+            String nuevoEstadoVehiculo;
+
+            // Si el estado físico es bueno → vehiculo = Disponible
+            // Si NO → vehiculo = Mantenimiento
+            if (estadoVehiculoFisico.equalsIgnoreCase("Bueno")) {
+                nuevoEstadoVehiculo = "Disponible";
+            } else {
+                nuevoEstadoVehiculo = "Mantenimiento";
+            }
+
             String sqlUpdVehiculo =
                 "UPDATE vehiculo SET estado = ? "
                 + "WHERE id_vehiculo = (SELECT id_vehiculo FROM alquiler WHERE id_alquiler = ?)";
 
             psUpdVehiculo = conn.prepareStatement(sqlUpdVehiculo);
-            psUpdVehiculo.setString(1, estadoVehiculoFisico);  // <-- Valor directo desde formulario
+            psUpdVehiculo.setString(1, nuevoEstadoVehiculo);
             psUpdVehiculo.setInt(2, idAlq);
             psUpdVehiculo.executeUpdate();
 
+            // ================== MENSAJE FINAL ===================
 
             JOptionPane.showMessageDialog(null, "Devolución procesada correctamente.");
 
