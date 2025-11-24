@@ -1,3 +1,8 @@
+ALTER TABLE alquiler 
+ADD COLUMN fecha_alquiler DATE NOT NULL DEFAULT (CURRENT_DATE);
+
+
+
 # 🚗 Sistema de Alquiler de Vehículos — *Rueda Libre*
 
 ## 📘 Descripción del Proyecto
