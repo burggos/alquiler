@@ -45,7 +45,7 @@ public class mostrar_reportes {
                     + "WHERE estado = 'Mantenimiento'";
                 break;
 
-            case "Vehículos disponibles en un rango de fechas":
+            case "Vehículos disponibles":
                 sql = "SELECT id_vehiculo, "
                     + "CONCAT(marca,' ',modelo) AS vehiculo, "
                     + "tipo, "

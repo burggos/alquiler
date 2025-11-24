@@ -61,7 +61,7 @@ public class Interfax_reportes extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createCompoundBorder(), "Reportes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
 
-        reportes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Vehículos más alquilados por modelo", "Ingresos totales por mes", "Vehículos que requieren mantenimiento", "Vehículos disponibles en un rango de fechas", "Lista de alquileres activos y vencidos", "Distribución de vehículos por tipo", "Ingresos por tipo de vehículo", "Historial de alquileres por cliente", "Reporte de daños en devoluciones", "Ingresos proyectados del próximo trimestre" }));
+        reportes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Vehículos más alquilados por modelo", "Ingresos totales por mes", "Vehículos que requieren mantenimiento", "Vehículos disponibles", "Lista de alquileres activos y vencidos", "Distribución de vehículos por tipo", "Ingresos por tipo de vehículo", "Historial de alquileres por cliente", "Reporte de daños en devoluciones", "Ingresos proyectados del próximo trimestre" }));
 
         jButton2.setBackground(new java.awt.Color(51, 255, 0));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N

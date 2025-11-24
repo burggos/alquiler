@@ -113,7 +113,7 @@
                 <StringItem index="1" value="Veh&#xed;culos m&#xe1;s alquilados por modelo"/>
                 <StringItem index="2" value="Ingresos totales por mes"/>
                 <StringItem index="3" value="Veh&#xed;culos que requieren mantenimiento"/>
-                <StringItem index="4" value="Veh&#xed;culos disponibles en un rango de fechas"/>
+                <StringItem index="4" value="Veh&#xed;culos disponibles"/>
                 <StringItem index="5" value="Lista de alquileres activos y vencidos"/>
                 <StringItem index="6" value="Distribuci&#xf3;n de veh&#xed;culos por tipo"/>
                 <StringItem index="7" value="Ingresos por tipo de veh&#xed;culo"/>
